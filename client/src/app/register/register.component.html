@@ -1,0 +1,39 @@
+<div class="form-box">
+  <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" class="form" autocomplete="off">
+    <span class="title">Sign up</span>
+    <div class="form-group">
+      <label for="" class="control-label">My Gender:</label>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label text-nowrap">Male
+          <input type="radio" value="male" formControlName="gender">
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label text-nowrap">Female
+          <input type="radio" value="female" formControlName="gender">
+        </label>
+      </div>
+    </div>
+    <div class="form-container d-flex flex-column gap-2" style="background-color: transparent">
+      <app-text-input [formControl] = 'registerForm.controls["username"]' [label]='"Username"' ></app-text-input>
+      <app-text-input [formControl] = 'registerForm.controls["knownAs"]' [label]="'Known As'" ></app-text-input>
+      <app-date-input [formControl] = 'registerForm.controls["dateOfBirth"]' [label]="'Date Of Birth'" [maxDate]="maxDate"></app-date-input>
+      <app-text-input [formControl] = 'registerForm.controls["city"]' [label]="'City'" ></app-text-input>
+      <app-text-input [formControl] = 'registerForm.controls["country"]' [label]="'Country'" ></app-text-input>
+      <app-text-input [formControl] = 'registerForm.controls["password"]' [label]="'Password'" ></app-text-input>
+      <app-text-input [formControl] = 'registerForm.controls["confirmedPassword"]' [label]="'Confirmed Password'" ></app-text-input>
+    </div>
+    <div class="row" *ngIf="validationErrors.length > 0">
+      <ul class="text-danger">
+        <li *ngFor="let err of validationErrors">{{err}}</li>
+      </ul>
+    </div>
+    <button [disabled]="!registerForm.valid" type="submit">Sign up</button>
+  </form>
+  <div class="form-section">
+    <a href="#" class="w-100 d-flex justify-content-end" (click)="cancel()">Cancel</a>
+    <p>
+      Have an account?<a href="/">Log in</a>
+    </p>
+  </div>
+</div>

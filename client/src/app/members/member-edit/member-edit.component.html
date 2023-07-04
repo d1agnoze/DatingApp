@@ -1,0 +1,120 @@
+<ng-container *ngIf="member">
+  <div class="container mt-3">
+    <div class="main-body">
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <div class="position-relative">
+                  <img
+                    src="{{ member.photoUrl || './assets/user.png' }}"
+                    alt="Admin"
+                    class="rounded-circle"
+                    width="150"
+                  />
+                </div>
+                <div class="mt-3">
+                  <h4>{{ member.knownAs }}</h4>
+                  <p class="text-secondary mb-1">@{{ member.username }}</p>
+                  <p class="text-muted font-size-sm text-truncate">
+                    {{ member.city }}, {{ member.country }}
+                  </p>
+                  <div class="d-flex w-100 justify-content-center">
+                    <button
+                      [disabled]="!editForm.dirty"
+                      type="submit"
+                      form="editForm"
+                      class="btn btn-pink"
+                    >
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-3">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+              >
+                <h6 class="mb-0">
+                  <span style="font-size: 20px">🅰️</span> Age:
+                </h6>
+                <span class="text-secondary">{{ member.age }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="alert alert-info" *ngIf="editForm.dirty">
+            <p class="m-0">
+              <Strong>Notice: </Strong> Any unsaved change will be lost
+            </p>
+          </div>
+          <tabset class="member-tabset">
+            <tab heading=" About {{ member.knownAs }}">
+              <form
+                #editForm="ngForm"
+                (ngSubmit)="updateMember()"
+                id="editForm"
+              >
+                <h4>Description</h4>
+                <textarea
+                  [(ngModel)]="member.introduction"
+                  name="introduction"
+                  rows="6"
+                  cols="113"
+                  >{{ member.introduction }}</textarea
+                >
+                <hr class="hr" />
+                <h6>👁️👁️ Looking For:</h6>
+                <textarea
+                  [(ngModel)]="member.lookingFor"
+                  name="lookingFor"
+                  rows="6"
+                  cols="113"
+                  >{{ member.lookingFor }}</textarea
+                >
+                <hr />
+                <h6>👁️👁️ Interests:</h6>
+                <textarea
+                  [(ngModel)]="member.interests"
+                  name="interests"
+                  rows="3"
+                  cols="113"
+                  >{{ member.interests }}</textarea
+                >
+                <hr />
+                <div class="">
+                  <h6>Location Edit:</h6>
+                  <label for="city">🏙️ <strong>City</strong></label>
+                  <input
+                    type="text"
+                    [(ngModel)]="member.city"
+                    name="city"
+                    class="form-control"
+                  />
+                  <label for="country">🗺️ <strong>Country</strong></label>
+                  <input
+                    type="text"
+                    name="country"
+                    [(ngModel)]="member.country"
+                    class="form-control"
+                  />
+                </div>
+              </form>
+            </tab>
+            <tab heading="Edit photos">
+              <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"
+              style="display: inline-block; margin-bottom: 20px;"
+              ></ngx-gallery> -->
+                <app-photo-editor [member]="member"></app-photo-editor>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

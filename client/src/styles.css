@@ -1,0 +1,182 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --pink-light: #ff92a5;
+  --bd: #f9b7c2af;
+}
+/* body{
+  background: #f1f1f1;
+} */
+.backdrop {
+  position: absolute;
+  z-index: 1024;
+  background-color: #0101014b;
+  width: 100vw;
+  height: 100vh;
+}
+.useBackdrop {
+  z-index: 1025;
+}
+
+.btn-pink:active {
+  filter: brightness(0.9);
+}
+.form-box {
+  background: #f1f7fe;
+  border-radius: 16px;
+  color: #010101;
+}
+
+.form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 32px 24px 24px;
+  gap: 16px;
+  text-align: center;
+}
+
+/*Form text*/
+.title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*Inputs box*/
+.form-container {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 1rem 0 0.5rem;
+  width: 100%;
+}
+
+.input {
+  background: none;
+  border: 0;
+  outline: 0;
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+}
+.btn-pink {
+  background-color: var(--pink-light);
+  color: white;
+  transition: all 0.2s ease;
+}
+.btn-outline-pink {
+  background-color: transparent;
+  border-color: var(--pink-light);
+  color: var(--pink-light);
+  transition: all 0.2s ease;
+}
+.btn-outline-pink:hover {
+  background-color: var(--pink-light);
+  color: white;
+}
+.btn-pink:hover {
+  background-color: var(--pink-light);
+  filter: brightness(1.1);
+  color: #e0ecfb;
+}
+.form-section {
+  padding: 16px;
+  font-size: 0.85rem;
+  background-color: #e0ecfb;
+  -webkit-box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+  font-weight: bold;
+  color: var(--pink-light);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.form-section a:hover {
+  color: #ff92a4c1;
+  text-decoration: underline;
+}
+
+/*Button*/
+.form button {
+  background-color: var(--pink-light);
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.form button:disabled{
+  background-color: #f3bdc6c1;
+}
+.form button:not(:disabled):hover {
+  background-color: #ff92a4c1;
+}
+.nav-link.active {
+  scale: 1.1;
+}
+
+.tab-panel {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+}
+.nav-tabs > li.open, .member-tabset > .nav-tabs > li>a{
+  color: #333333;
+}
+.nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
+  border-bottom: 4px solid #fbcdcf;
+}
+
+.member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+
+.member-tabset > .nav-tabs > li.open > a > i, .member-tabset > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
+}
+
+.member-tabset > .nav-tabs > li.open .dropdown-menu, .member-tabset > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+
+.member-tabset > .nav-tabs > li.active {
+  border-bottom: 4px solid var(--pink-light);
+  position: relative;
+}
+
+.member-tabset > .nav-tabs > li.active > a {
+  border: 0 !important;
+  color: #333333;
+}
+
+.member-tabset > .nav-tabs > li.active > a > i {
+  color: #404040;
+}
+
+.member-tabset > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+

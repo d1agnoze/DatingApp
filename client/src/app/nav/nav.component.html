@@ -1,0 +1,50 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom"
+  style="background-color: var(--pink-light)">
+  <div class="container d-flex justify-content-xxl-between align-items-center">
+    <div class="col-md-3 mb-2 mb-md-0 w-auto">
+      <a routerLink="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <strong class="fs-5 text-white">Dating App 💗</strong>
+      </a>
+    </div>
+
+    <ul *ngIf="this.accountService.currentUser$" class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ng-container *ngIf="this.accountService.currentUser$ | async">
+        <li>
+          <a routerLink="/" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Home</a>
+        </li>
+        <li>
+          <a routerLink="/members" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Matches</a>
+        </li>
+        <li>
+          <a routerLink="/lists" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Lists</a>
+        </li>
+        <li>
+          <a routerLink="/messages" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Messages</a>
+        </li>
+      </ng-container>
+    </ul>
+
+    <div class="dropdown" *ngIf="(this.accountService.currentUser$ | async) as user" dropdown>
+      <div class="d-flex gap-2 align-items-center">
+        <img class="img" src="{{user.photoUrl || './assets/user.png' }}" alt="{{user.username}}" srcset="">
+        <p class="dropdown-toggle text-light m-0" dropdownToggle>
+          Welcome {{user.username | titlecase }} !!!
+        </p>
+      </div>
+      <div class="dropdown-menu mt-1" *dropdownMenu>
+        <a href="#" routerLink="member/edit" class="dropdown-item">Edit Profile </a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item" (click)="logOut()">Logout</a>
+      </div>
+    </div>
+
+    <div class="col-md-3 text-end w-auto" *ngIf="!(this.accountService.currentUser$ | async)">
+      <form #loginForm="ngForm" class="w-100 me-3 d-flex gap-2" (ngSubmit)="login()">
+        <input type="text" class="form-control" placeholder="Username" name="username" [(ngModel)]="model.username" />
+        <input type="password" class="form-control" placeholder="Password" name="password"
+          [(ngModel)]="model.password" />
+        <button type="submit" class="btn btn-outline-light me-2">Login</button>
+      </form>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+<div class="position-relative">
+  <div
+    class="p-5 mb-4 bg-body-tertiary rounded-3"
+    style="
+      background: url(https://images.unsplash.com/photo-1578641214267-c33356f49df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80)
+        fixed center;
+      background-position-y: 30%;
+    "
+  >
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold text-white">Join Now</h1>
+      <p class="col-md-8 fs-4 text-white">
+        Come on in to view your matches... all you need to do is sign up
+      </p>
+      <button
+        class="btn border-0 btn-lg text-white btn-pink"
+        style="background-color: var(--pink-light)"
+        type="button"
+        (click)="registerToggle()"
+      >
+        Register now
+      </button>
+    </div>
+  </div>
+  <div *ngIf="registerMode" class="w-100 d-flex justify-content-center top-0 position-absolute useBackdrop">
+    <app-register>
+
+
