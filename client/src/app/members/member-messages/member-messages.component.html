@@ -1,0 +1,31 @@
+<div class="d-flex gap-3 flex-wrap flex-column">
+  <div class="" *ngIf="messages?.length === 0">
+    This dude got no messages yet 🤣
+  </div>
+  <div class="card-mess" [ngClass]="{'align-self-end': message.senderUsername !== username }" *ngFor="let message of messages">
+    <div class="img-mess"
+      style="background-image: url('{{message.senderPhotoUrl || defaultPic }}'); background-size: cover;"></div>
+    <div class="textBox">
+      <div class="textContent">
+        <p class="h1">{{message.senderUsername}}</p>
+        <div class="d-flex gap-1">
+          <span class="span">⏲️{{message.messageSent | timeago}}</span>
+          <span class="span text-danger" *ngIf="!message.dateRead && message.senderUsername !== username">🔴Unread</span>
+          <span class="span text-success" *ngIf="message.dateRead && message.senderUsername !== username">✅ Read
+            {{message.dateRead | timeago}}</span>
+        </div>
+      </div>
+      <p class="p">{{message.content}}</p>
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer mt-5">
+  <form #messageForm="ngForm" (ngSubmit)="sendMessages()" autocomplete="off">
+    <div class="input-group">
+      <input name="messageContent" required [(ngModel)]="messageContent" type="text" class="form-control " placeholder="Send Private Message">
+      <button [disabled]="!messageForm.valid" type="submit" class="btn btn-secondary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </form>
+</div>

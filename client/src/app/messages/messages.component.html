@@ -1,1 +1,54 @@
-<p>messages works!</p>
+<div class="container">
+  <div class="btn-group mt-3" name="container">
+    <button class="btn btn-outline-pink" btnRadio="Unread" (click)="loadMessages()" [(ngModel)]="container">
+      📖 Unread
+    </button>
+    <button class="btn btn-outline-pink" btnRadio="Inbox" (click)="loadMessages()" [(ngModel)]="container">
+      📩 Inbox
+    </button>
+    <button class="btn btn-outline-pink" btnRadio="Outbox" (click)="loadMessages()" [(ngModel)]="container">
+      📤 Outbox
+    </button>
+  </div>
+  <hr />
+  <div class="row" *ngIf="messages?.length === 0">
+    <h2>No messages 😭</h2>
+  </div>
+  <ng-container *ngIf="messages?.length>0">
+    <table class="table table-hover" style="cursor: pointer;">
+      <tr>
+        <th style="">Messages</th>
+        <th style="">From/To</th>
+        <th style="">Send/Received</th>
+        <th style=""></th>
+      </tr>
+      <tr [hidden]="loading"  *ngFor="let item of messages"
+          routerLink='{{container==="Outbox"
+                      ? "/members/" + item.recipientUsername
+                      : "/members/"+ item.senderUsername}}'
+          [queryParams]="{tab:3}"
+          class="tdlist"
+      >
+        <td>{{item.content}}</td>
+        <td>
+          <div *ngIf="container ==='Outbox'" class="d-flex gap-3 align-items-center">
+            <img src="{{item.recipientPhotoUrl || './assets/user.png'}}" class="img rounded-circle "  alt="{{item.recipientUsername}}" srcset="">
+            <strong>{{item.recipientUsername | titlecase}}</strong>
+          </div>
+          <div *ngIf="container !=='Outbox'">
+            <img src="{{item.senderPhotoUrl || './assets/user.png'}}" class="img rounded-circle " alt="{{item.senderUsername}}" srcset="">
+            <strong>{{item.senderUsername | titlecase}}</strong>
+          </div>
+        </td>
+        <td>{{item.messageSent | timeago}}</td>
+        <td><button class="btn btn-pink" (click)="$event.stopPropagation()" (click)="deleteMessage(item.id)">Delete</button></td>
+      </tr>
+    </table>
+  </ng-container>
+  <div class="w-100 d-flex justify-content-center" *ngIf="pagination && !loading">
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+      [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+      nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+  </div>
+</div>

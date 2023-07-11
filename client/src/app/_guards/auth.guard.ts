@@ -12,6 +12,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   return accountService.currentUser$.pipe(map((user) => {
     if (user) return true;
     toastr.error("You Shall Not Pass");
-    return false
+    return false;
   }));
 };

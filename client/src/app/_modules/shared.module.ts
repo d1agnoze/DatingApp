@@ -6,7 +6,10 @@ import { ToastrModule } from "ngx-toastr";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { NgxGalleryModule } from "@kolkov/ngx-gallery";
 import { FileUploadModule } from "ng2-file-upload";
-
+import {PaginationModule} from 'ngx-bootstrap/pagination'
+import {ButtonsModule} from 'ngx-bootstrap/buttons'
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TimeagoModule } from "ngx-timeago";
 @NgModule({
   declarations: [],
   imports: [
@@ -19,6 +22,10 @@ import { FileUploadModule } from "ng2-file-upload";
     NgxGalleryModule,
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
+    TimeagoModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   exports: [
     BsDropdownModule,
@@ -27,6 +34,10 @@ import { FileUploadModule } from "ng2-file-upload";
     NgxGalleryModule,
     FileUploadModule,
     BsDatepickerModule,
+    PaginationModule,
+    ButtonsModule,
+    TimeagoModule,
+    ModalModule,
   ],
 })
 export class SharedModule {}

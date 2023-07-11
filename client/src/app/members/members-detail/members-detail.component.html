@@ -1,29 +1,13 @@
-<ng-container *ngIf="member">
+<ng-container>
   <div class="container mt-3">
     <div class="main-body">
-      <!-- Breadcrumb -->
-      <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-          <li class="breadcrumb-item active" aria-current="page">
-            User Profile
-          </li>
-        </ol>
-      </nav> -->
-      <!-- /Breadcrumb -->
-
       <div class="row gutters-sm">
         <div class="col-md-4 mb-3">
           <div class="card">
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
-                <img
-                  src="{{ member.photoUrl || './assets/user.png' }}"
-                  alt="Admin"
-                  class="rounded-circle"
-                  width="150"
-                />
+                <img src="{{ member.photoUrl || './assets/user.png' }}" alt="Admin" class="rounded-circle"
+                  width="150" />
                 <div class="mt-3">
                   <h4>{{ member.knownAs }}</h4>
                   <p class="text-secondary mb-1">@{{ member.username }}</p>
@@ -32,7 +16,7 @@
                   </p>
                   <div class="d-flex gap-1 justify-content-center">
                     <button class="btn btn-pink">Like</button>
-                    <button class="btn btn-outline-pink">Message</button>
+                    <button (click)="selectTab(3)" class="btn btn-outline-pink">Message</button>
                   </div>
                 </div>
               </div>
@@ -40,45 +24,35 @@
           </div>
           <div class="card mt-3">
             <ul class="list-group list-group-flush">
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-              >
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                 <h6 class="mb-0">
                   <span style="font-size: 20px">🗺️</span> Location
                 </h6>
-                <span class="text-secondary"
-                  >{{ member.city }}, {{ member.country }}</span
-                >
+                <span class="text-secondary">{{ member.city }}, {{ member.country }}</span>
               </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-              >
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                 <h6 class="mb-0">
                   <span style="font-size: 20px">🅰️</span> Age:
                 </h6>
                 <span class="text-secondary">{{ member.age }}</span>
               </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-              >
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                 <h6 class="mb-0">
                   <span style="font-size: 20px">⏲️</span>Last Active
                 </h6>
-                <span class="text-secondary"> {{ member.lastActive }} </span>
+                <span class="text-secondary"> {{ member.lastActive | timeago }} </span>
               </li>
 
-              <li
-                class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
-              >
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                 <h6 class="mb-0">🕰️ Member Since</h6>
-                <span class="text-secondary">{{ member.created }}</span>
+                <span class="text-secondary">{{ member.created | date : 'longDate' }}</span>
               </li>
             </ul>
           </div>
         </div>
         <div class="col-8">
-          <tabset class="member-tabset">
-            <tab heading=" About {{ member.knownAs }}">
+          <tabset class="member-tabset" #memberTabs>
+            <tab heading=" About {{ member.knownAs }}" (selectTab)="onTabActivateed($event)">
               <h4>Description</h4>
               <p>{{ member.introduction }}</p>
               <hr class="hr" />
@@ -86,20 +60,23 @@
               <p>{{ member.lookingFor }}</p>
             </tab>
 
-            <tab heading="Interests">
+            <tab heading="Interests" (selectTab)="onTabActivateed($event)">
               <h4>Interests</h4>
-              <p>{{member.interests}}</p>
+              <p>{{ member.interests }}</p>
             </tab>
 
-            <tab heading="Gallery">
-              <p>phots</p>
-              <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"
-              style="display: inline-block; margin-bottom: 20px;"
-              ></ngx-gallery>
+            <tab heading="Gallery" (selectTab)="onTabActivateed($event)">
+              <div class="container d-flex justify-content-center">
+                <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"
+                  style="display: inline-block; margin-bottom: 20px"></ngx-gallery>
+              </div>
             </tab>
 
-            <tab heading="Message">
-              <p>heh</p>
+            <tab heading="Message" (selectTab)="onTabActivateed($event)">
+              <div class="position-relative" style="min-height: inherit;">
+                <h3>Messages</h3>
+                <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
+              </div>
             </tab>
           </tabset>
         </div>

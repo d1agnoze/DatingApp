@@ -1,14 +1,26 @@
 <div class="card col-2">
   <div class="card__img">
-    <img src="{{ member.photoUrl || './assets/user.png'}}" alt="{{ member.knownAs }}" srcset="" />
+    <img
+      src="{{ member.photoUrl || './assets/user.png' }}"
+      alt="{{ member.knownAs }}"
+      srcset=""
+    />
   </div>
-  <div class="card__title">{{ member.knownAs }}</div>
+  <div class="card__title">{{ member.knownAs }}, {{ member.age }}</div>
   <div class="card__subtitle">@{{ member.username }} - {{ member.city }}</div>
-  <div class="w-100 h-100 position-absolute d-flex justify-content-center btnSet ">
+  <div
+    class="w-100 h-100 position-absolute d-flex justify-content-center btnSet"
+  >
     <div class="card__wrapper d-flex gap-1">
-      <button class="card__btn" title="Like">💗</button>
-      <button class="card__btn" routerLink="/members/{{member.username}}" title="Profile">📰</button>
-      <button class="card__btn" title="Message">💌</button>
+      <button class="card__btn" title="Like" (click)="addLike(member)">💗</button>
+      <button
+        class="card__btn"
+        routerLink="/members/{{ member.username }}"
+        title="Profile"
+      >
+        📰
+      </button>
+      <button class="card__btn" title="Message" routerLink="/members/{{member.username}}" [queryParams]="{tab:3}">💌</button>
     </div>
   </div>
 </div>

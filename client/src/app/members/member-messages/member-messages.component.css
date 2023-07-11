@@ -1,0 +1,56 @@
+.card-mess {
+  width: max-content;
+  background: #ffffffcb;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1rem 1.5rem ;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.img-mess {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(#d7cfcf, #9198e5);
+}
+
+.card-mess:hover > .img-mess {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(#9198e5, #712020);
+}
+
+.textBox {
+  /* width: calc(100% - 90px); */
+  margin-left: 10px;
+}
+
+.textContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.span {
+  font-size: 13px;
+}
+
+.h1 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.p {
+  margin: 0;
+}
+

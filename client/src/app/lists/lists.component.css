@@ -1,0 +1,5 @@
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: white!important;
+  background-color: var(--pink-light);
+  border-color: var(--pink-light);
+}

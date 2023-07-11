@@ -149,3 +149,12 @@ D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\AutoMapper.dll
 D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\CloudinaryDotNet.dll
 D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Documents\CSharp\DatingApp\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

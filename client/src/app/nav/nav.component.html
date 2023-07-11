@@ -21,6 +21,9 @@
         <li>
           <a routerLink="/messages" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Messages</a>
         </li>
+        <li *appHasRole='["Admin","Moderator"]'>
+          <a routerLink="/admin" class="nav-link text-white fw-bold px-2" routerLinkActive="active">Admin</a>
+        </li>
       </ng-container>
     </ul>
 

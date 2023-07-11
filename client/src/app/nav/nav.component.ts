@@ -39,7 +39,6 @@ export class NavComponent implements OnInit {
         if (res) {
           console.table(res);
           this.model.username = res.userName;
-          console.log(this.model.username);
         }
       },
       error: (err) => console.log(err),

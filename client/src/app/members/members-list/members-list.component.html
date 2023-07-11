@@ -1,9 +1,59 @@
 <div class="container mt-3 w-75">
-  <div class="d-flex flex-wrap justify-content-center gap-3">
+  <div class="text-start my-3 fs-3 fw-medium" style="color: var(--bs-pink)">
+    Cupid found {{ pagination?.totalItems }} people of your liking 💘
+  </div>
+  <hr />
+  <div class="my-3">
+    <form #form="ngForm" class="d-flex gap-2" (ngSubmit)="loadMember()" autocomplete="off">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingNum" placeholder="your preference" name="minAge"
+          [(ngModel)]="userParams.minAge" />
+        <label for="floatingNum">Age From:</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingNum" placeholder="your preference" name="maxAge"
+          [(ngModel)]="userParams.maxAge" />
+        <label for="floatingNum">Age Below:</label>
+      </div>
+      <div class="">
+        <label for="genderSelector">Choose Yo Prefered Genda</label>
+        <select class="form-select" name="gender" id="genderSelector" [(ngModel)]="userParams.gender">
+          <option *ngFor="let gender of genderList" [value]="gender.value">
+            {{ gender.display }}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-pink" type="submit">Apply Filter</button>
+      <button class="btn btn-outline-pink" type="submit" (click)="resetFilter()">
+        Reset Filter
+      </button>
+
+      <div class="btn btn-group-vertical" style="margin-left: auto">
+        <button class="btn btn-outline-pink" name="orderBy" [(ngModel)]="userParams.orderBy" (click)="loadMember()"
+          btnRadio="lastActive" type="button">
+          Last Active
+        </button>
+        <button class="btn btn-outline-pink" name="orderBy" [(ngModel)]="userParams.orderBy" (click)="loadMember()"
+          btnRadio="created" type="button">
+          Newest Members
+        </button>
+      </div>
+    </form>
+  </div>
+  <hr />
+  <div class="d-flex flex-wrap justify-content-center flex-column gap-4">
     <ng-container>
-      <div *ngFor="let member of members$ | async">
-        <app-member-card [member]="member"></app-member-card>
+      <div class="d-flex flex-wrap justify-content-start gap-3">
+        <div *ngFor="let member of members">
+          <app-member-card [member]="member"></app-member-card>
+        </div>
       </div>
     </ng-container>
+    <div class="w-100 d-flex justify-content-center" *ngIf="pagination">
+      <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+        nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+      </pagination>
+    </div>
   </div>
 </div>

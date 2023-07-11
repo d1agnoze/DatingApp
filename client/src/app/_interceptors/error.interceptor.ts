@@ -30,14 +30,23 @@ export class ErrorInterceptor implements HttpInterceptor {
                   }
                 }
                 throw modalStateErrors.flat();
-              } else {
-                this.toastr.error(err.statusText, err.status);
+              }
+              else if(typeof(err.error)==="object"){
+                this.toastr.error(err.StatusText, err.status)
+              }
+              else {
+                this.toastr.error(err.error, err.status);
               }
               break;
             case 401:
               console.log(err);
               this.toastr.error(err.error, err.status);
               break;
+            case 403:
+              console.log(err);
+              this.toastr.error("U r not allowed", err.status);
+              break;
+
             case 404:
               this.router.navigateByUrl("/not-found");
               break;

@@ -1,0 +1,19 @@
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: white!important;
+  background-color: var(--pink-light);
+  border-color: var(--pink-light);
+}
+.img{
+  max-height: 2.5rem;
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+.tdlist{
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+  border-radius: 5px;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+.tdlist>td:first-child{
+  padding-left: 1.5rem;
+}
